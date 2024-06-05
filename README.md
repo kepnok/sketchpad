@@ -1,0 +1,1 @@
+This is a sketchpad written in javascript. Use this to make good art.
