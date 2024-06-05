@@ -1,16 +1,26 @@
 const pad = document.querySelector(".pad");
-const padWidth = pad.offsetWidth;
-const padHeight = pad.offsetHeight;
-console.log(padWidth);
-console.log(padWidth/16);
+const padWidth = 400;
+const padHeight = 400;
 
-for(let i = 0; i<16*16; i++){
-    const element = document.createElement("div");
-    element.classList.add("cell");
+let gridSize = 16;
 
-    element.style.width = (padWidth/16) + "px";
-    element.style.height = (padHeight/16) + "px";
+gridMaker(gridSize);
 
-    pad.appendChild(element);
-    console.log(element.offsetWidth);
+function gridMaker(num) {
+    for(let i = 0; i<num; i++){
+        const column = document.createElement("div");
+        column.classList.add("cell-column");
+
+        column.style.width = (padWidth/num) + "px";
+
+        pad.appendChild(column);
+        for(let j = 0; j<num; j++){
+            const row = document.createElement("div");
+            row.classList.add("cell-row");
+
+            row.style.height = (padHeight/num) + "p";
+            row.style.flex = "1";
+            column.appendChild(row);
+        }
+    }
 }
