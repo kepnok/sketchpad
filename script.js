@@ -57,10 +57,6 @@ function addEventListenerToCells() {
 
     cells.forEach(cell => {
         cell.addEventListener("mouseover", event => {
-
-            if(isMouseDown){
-                return;
-            }
             
             const colorDetector = document.querySelector(".color-picker");
 
@@ -70,13 +66,6 @@ function addEventListenerToCells() {
     });
 }
 
-document.addEventListener("mousedown", () => {
-    isMouseDown = true;
-});
-
-document.addEventListener("mouseup", () => {
-    isMouseDown = false;
-});
 
 menu.value = "default";
 gridMaker(gridSize);
