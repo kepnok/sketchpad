@@ -56,7 +56,12 @@ function addEventListenerToCells() {
     const cells = document.querySelectorAll(".cell-row");
 
     cells.forEach(cell => {
-        cell.addEventListener("mouseover", () => {
+        cell.addEventListener("mouseover", event => {
+
+            if(isMouseDown){
+                return;
+            }
+            
             const colorDetector = document.querySelector(".color-picker");
 
             colorPicker = colorDetector.value;
@@ -64,6 +69,14 @@ function addEventListenerToCells() {
         });
     });
 }
+
+document.addEventListener("mousedown", () => {
+    isMouseDown = true;
+});
+
+document.addEventListener("mouseup", () => {
+    isMouseDown = false;
+});
 
 menu.value = "default";
 gridMaker(gridSize);
